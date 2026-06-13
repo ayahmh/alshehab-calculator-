@@ -15,17 +15,16 @@ body{
     background-size: cover;
 
     display:flex;
-    justify-content:center;
+    justify-content:flex-start;
     align-items:center;
 
-    min-height:100vh;
+    height:100vh;
     margin:0;
 
-    padding-right:0 15px;
+    padding-right:500px;
 
     direction: rtl;
     text-align: right;
-    box-sizing: border-box;
 }
 
 .container{
@@ -34,14 +33,17 @@ body{
 
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    width: 100%;
-    max-width:350px;
+
+    width:350px;
 
     padding:30px;
 
     border-radius:15px;
 
     box-shadow:0 0 15px rgba(0,0,0,0.2);
+    
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 h2{
@@ -51,6 +53,8 @@ h2{
 
 label{
     color:black;
+    display: block;
+    margin-top: 10px;
 }
 
 input, select{
@@ -96,6 +100,22 @@ button{
     cursor:pointer;
 }
 
+.btn-secondary {
+    background: #6c757d;
+}
+
+.btn-success {
+    background: #28a745;
+}
+
+.btn-danger {
+    background: #dc3545;
+    padding: 6px 12px;
+    margin-top: 5px;
+    width: auto;
+    font-size: 12px;
+}
+
 .result{
 
     margin-top:15px;
@@ -108,101 +128,174 @@ button{
 
     color:black;
 }
-@media (max-width: 768px) {
-    .container {
-        width: 90%;
-        padding: 20px;
-    }
+
+.admin-panel {
+    display: none;
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    border: 1px solid #ccc;
 }
+
+.admin-car-section {
+    margin-bottom: 15px;
+    border-bottom: 1px dashed #444;
+    padding-bottom: 10px;
+}
+
+.admin-car-section h4 {
+    margin: 5px 0;
+    color: #111;
+}
+
+.add-car-box {
+    background: rgba(0, 123, 255, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 15px;
+    border: 1px solid rgba(0, 123, 255, 0.3);
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="container" id="mainContainer">
 
     <h2>حاسبة المرابحة الاسلامية</h2>
 
-    <label>الراتب</label>
-    <input type="number" id="salary" step="0.01">
+    <div id="calculatorForm">
+        <label>الراتب</label>
+        <input type="number" id="salary" step="0.01">
 
-    <label>المؤسسة</label>
-    <select id="org">
+        <label>المؤسسة</label>
+        <select id="org">
+            <option value="2">مكافحة الفساد</option>
+            <option value="2">مصلحة الجمارك</option>
+            <option value="2">المدعي العام العسكري</option>
+            <option value="2">الشركة الوطنية للنقل البحري</option>
+            <option value="2">المحكمة العليا</option>
+            <option value="2">المنطقة الحرة مصراتة</option>
+            <option value="2">النقابة العامة للمعلمين</option>
+            <option value="2">التعليم العالي</option>
+            <option value="2">شركة الواحة للنفط</option>
+            <option value="2">الحرس البلدي</option>
+            <option value="2">المجلس الوطني للحقوق</option>
+            <option value="2">رقابة الأغذية</option>
+            <option value="2">جمعية الدعوة الإسلامية</option>
+            <option value="2">الداخلية</option>
+            <option value="2">وزارة الزراعة</option>
+            <option value="2">خطوط أفريقية</option>
+            <option value="2">معهد النفط</option>
+            <option value="2">هاتف ليبيا</option>
+            <option value="2">مركز بحوث النفط</option>
+            <option value="2">شركة حفر الآبار النفطية</option>
+            <option value="2">أكاكوس للعمليات النفطية</option>
+            <option value="2">شركة سرت للنفط</option>
+            <option value="2">شركة لاريكو للنفط</option>
+            <option value="2">شركة زويتينة للنفط</option>
+            <option value="2">القضاء العسكري</option>
+            <option value="2">قناة ليبيا الوطنية</option>
+            <option value="2">حرس المنشآت النفطية</option>
+            <option value="3">غير ذلك</option>
+        </select>
 
-        <option value="2">مكافحة الفساد</option>
-        <option value="2">مصلحة الجمارك</option>
-        <option value="2">المدعي العام العسكري</option>
-        <option value="2">الشركة الوطنية للنقل البحري</option>
-        <option value="2">المحكمة العليا</option>
-        <option value="2">المنطقة الحرة مصراتة</option>
-        <option value="2">النقابة العامة للمعلمين</option>
-        <option value="2">التعليم العالي</option>
-        <option value="2">شركة الواحة للنفط</option>
-        <option value="2">الحرس البلدي</option>
-        <option value="2">المجلس الوطني للحقوق</option>
-        <option value="2">رقابة الأغذية</option>
-        <option value="2">جمعية الدعوة الإسلامية</option>
-        <option value="2">الداخلية</option>
-        <option value="2">وزارة الزراعة</option>
-        <option value="2">خطوط أفريقية</option>
-        <option value="2">معهد النفط</option>
-        <option value="2">هاتف ليبيا</option>
-        <option value="2">مركز بحوث النفط</option>
-        <option value="2">شركة حفر الآبار النفطية</option>
-        <option value="2">أكاكوس للعمليات النفطية</option>
-        <option value="2">شركة سرت للنفط</option>
-        <option value="2">شركة لاريكو للنفط</option>
-        <option value="2">شركة زويتينة للنفط</option>
-        <option value="2">القضاء العسكري</option>
-        <option value="2">قناة ليبيا الوطنية</option>
-        <option value="2">حرس المنشآت النفطية</option>
-        <option value="3">غير ذلك</option>
+        <label>نوع السيارة</label>
+        <select id="car">
+            </select>
 
-    </select>
+        <button onclick="calculate()">
+            احسب
+        </button>
 
-    <label>نوع السيارة</label>
-    <select id="car">
+        <button class="btn-secondary" onclick="toggleAdminPanel()">
+            تعديل الأسعار والسيارات
+        </button>
 
-        <option value="urbanCruiser">
-            تويوتا أوربان كروزر
-        </option>
+        <div class="result" id="resultBox"></div>
 
-        <option value="creta">
-            هيونداي كريتا
-        </option>
+        <div id="optionsBox"></div>
 
-    </select>
+        <button id="submitBtn" onclick="finalCalculate()" style="display:none;">
+            تأكيد
+        </button>
+    </div>
 
-    <button onclick="calculate()">
-        احسب
-    </button>
+    <div id="adminPanel" class="admin-panel">
+        <h3>تعديل الأسعار والسيارات</h3>
+        
+        <div id="adminCarsList"></div>
+        
+        <div class="add-car-box">
+            <h4>➕ إضافة سيارة جديدة</h4>
+            <label>اسم السيارة:</label>
+            <input type="text" id="new_car_name" placeholder="مثال: هيونداي توسان">
+            <label>السعر الأساسي:</label>
+            <input type="number" id="new_car_base" placeholder="مثال: 150000">
+            <label>سعر التسكيرة:</label>
+            <input type="number" id="new_car_cash" placeholder="مثال: 120000">
+            <button class="btn-success" style="margin-top:10px; padding:8px;" onclick="addNewCarToList()">إدراج السيارة في القائمة</button>
+        </div>
 
-    <div class="result" id="resultBox"></div>
-
-    <div id="optionsBox"></div>
-
-    <button id="submitBtn" onclick="finalCalculate()" style="display:none;">
-        تأكيد
-    </button>
+        <hr style="margin-top:20px;">
+        <button class="btn-success" onclick="saveNewPrices()">حفظ التغييرات النهائية</button>
+        <button class="btn-secondary" onclick="toggleAdminPanel()">إلغاء</button>
+    </div>
 
 </div>
 
 <script>
 
-const cars = {
-
-    urbanCruiser:{
-        name:"تويوتا أوربان كروزر",
-        basePrice:135000,
-        cashAdd:115000
+// الأسعار الافتراضية الأساسية (تم تعديل تسكيرة كريتا فل إلى 110000)
+const defaultCars = {
+    urbanCruiser: {
+        name: "تويوتا أوربان كروزر",
+        basePrice: 135000,
+        cashAdd: 115000
     },
-
-    creta:{
-        name:"هيونداي كريتا",
-        basePrice:120000,
-        cashAdd:95000
+    stargazer: {
+        name: "هيونداي ستارجيزر",
+        basePrice: 94900,
+        cashAdd: 65000
+    },
+    cretaFull: {
+        name: "هيونداي كريتا فل",
+        basePrice: 128000,
+        cashAdd: 110000
+    },
+    cretaMid: {
+        name: "هيونداي كريتا نص",
+        basePrice: 120000,
+        cashAdd: 100000
     }
 };
+
+// تحميل البيانات أو استخدام الافتراضية
+let cars = JSON.parse(localStorage.getItem('shihab_cars_prices')) || defaultCars;
+
+// للتأكد من وجود السيارات الأساسية دائماً
+for (let key in defaultCars) {
+    if (!cars[key]) {
+        cars[key] = defaultCars[key];
+    }
+}
+
+// دالة لتحديث قائمة خيارات السيارات (Dropdown) في الواجهة الرئيسية
+function updateCarSelectOptions() {
+    let carSelect = document.getElementById("car");
+    carSelect.innerHTML = "";
+    for (let key in cars) {
+        let opt = document.createElement("option");
+        opt.value = key;
+        opt.textContent = cars[key].name;
+        carSelect.appendChild(opt);
+    }
+}
+
+// تشغيل التحديث فور تحميل الصفحة
+updateCarSelectOptions();
 
 function calculate(){
 
@@ -280,7 +373,7 @@ function calculate(){
 function finalCalculate(){
 
     let container =
-        document.querySelector(".container");
+        document.getElementById("mainContainer");
 
     let salary =
         parseFloat(document.getElementById("salary").value) || 0;
@@ -380,6 +473,99 @@ function finalCalculate(){
         </button>
 
     `;
+}
+
+function toggleAdminPanel() {
+    let form = document.getElementById("calculatorForm");
+    let panel = document.getElementById("adminPanel");
+    
+    if (panel.style.display === "block") {
+        panel.style.display = "none";
+        form.style.display = "block";
+    } else {
+        form.style.display = "none";
+        panel.style.display = "block";
+        renderAdminCars();
+    }
+}
+
+function renderAdminCars() {
+    let listContainer = document.getElementById("adminCarsList");
+    listContainer.innerHTML = "";
+    
+    for (let key in cars) {
+        listContainer.innerHTML += `
+            <div class="admin-car-section" id="section_${key}">
+                <h4>${cars[key].name}</h4>
+                <label>السعر الأساسي:</label>
+                <input type="number" id="admin_base_${key}" value="${cars[key].basePrice}">
+                <label>سعر التسكيرة:</label>
+                <input type="number" id="admin_cash_${key}" value="${cars[key].cashAdd}">
+                <button class="btn-danger" onclick="deleteCar('${key}')">حذف هذه السيارة</button>
+            </div>
+        `;
+    }
+}
+
+// دالة مؤقتة لإضافة السيارة الجديدة للقائمة المفتوحة قبل الحفظ النهائي
+function addNewCarToList() {
+    let name = document.getElementById("new_car_name").value.trim();
+    let base = parseFloat(document.getElementById("new_car_base").value);
+    let cash = parseFloat(document.getElementById("new_car_cash").value);
+    
+    if(!name || isNaN(base) || isNaN(cash)) {
+        alert("الرجاء ملء جميع حقول السيارة الجديدة بشكل صحيح!");
+        return;
+    }
+    
+    // توليد مفتاح فريد للسيارة بناءً على الوقت الحالي
+    let key = "car_" + Date.now();
+    
+    cars[key] = {
+        name: name,
+        basePrice: base,
+        cashAdd: cash
+    };
+    
+    // إعادة تفريغ الحقول لعملية إضافة أخرى
+    document.getElementById("new_car_name").value = "";
+    document.getElementById("new_car_base").value = "";
+    document.getElementById("new_car_cash").value = "";
+    
+    // إعادة عرض اللوحة لتظهر السيارة الجديدة مضافة
+    renderAdminCars();
+}
+
+function deleteCar(key) {
+    if(confirm(`هل أنت متأكد من حذف سيارة (${cars[key].name})؟`)) {
+        delete cars[key];
+        renderAdminCars();
+    }
+}
+
+function saveNewPrices() {
+    // تحديث قيم السيارات الحالية المتواجدة في الحقول أولاً
+    for (let key in cars) {
+        let inputBase = document.getElementById(`admin_base_${key}`);
+        let inputCash = document.getElementById(`admin_cash_${key}`);
+        
+        if(inputBase && inputCash) {
+            let newBase = parseFloat(inputBase.value);
+            let newCash = parseFloat(inputCash.value);
+            
+            if (!isNaN(newBase)) cars[key].basePrice = newBase;
+            if (!isNaN(newCash)) cars[key].cashAdd = newCash;
+        }
+    }
+    
+    // حفظ التغييرات في ذاكرة المتصفح
+    localStorage.setItem('shihab_cars_prices', JSON.stringify(cars));
+    
+    // تحديث القائمة الرئيسية بالسيارات الجديدة والقديمة المتبقية
+    updateCarSelectOptions();
+    
+    alert("تم حفظ جميع التغييرات بنجاح!");
+    toggleAdminPanel();
 }
 
 </script>
