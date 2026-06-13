@@ -157,6 +157,18 @@ button{
     border: 1px solid rgba(0, 123, 255, 0.3);
 }
 
+/* التعديل الجديد لإصلاح التناسب مع شاشات الهواتف */
+@media (max-width: 768px) {
+    body {
+        padding-right: 0px;
+        justify-content: center; /* تجعل المربع في منتصف الشاشة على الهاتف */
+    }
+    .container {
+        width: 90%; /* تجعل المربع مرن ليتناسب مع أحجام الهواتف المختلفة */
+        margin: 20px auto;
+    }
+}
+
 </style>
 </head>
 
@@ -248,7 +260,7 @@ button{
 
 <script>
 
-// الأسعار الافتراضية الأساسية (تم تعديل تسكيرة كريتا فل إلى 110000)
+// الأسعار الافتراضية الأساسية
 const defaultCars = {
     urbanCruiser: {
         name: "تويوتا أوربان كروزر",
@@ -282,7 +294,6 @@ for (let key in defaultCars) {
     }
 }
 
-// دالة لتحديث قائمة خيارات السيارات (Dropdown) في الواجهة الرئيسية
 function updateCarSelectOptions() {
     let carSelect = document.getElementById("car");
     carSelect.innerHTML = "";
@@ -294,7 +305,6 @@ function updateCarSelectOptions() {
     }
 }
 
-// تشغيل التحديث فور تحميل الصفحة
 updateCarSelectOptions();
 
 function calculate(){
@@ -507,7 +517,6 @@ function renderAdminCars() {
     }
 }
 
-// دالة مؤقتة لإضافة السيارة الجديدة للقائمة المفتوحة قبل الحفظ النهائي
 function addNewCarToList() {
     let name = document.getElementById("new_car_name").value.trim();
     let base = parseFloat(document.getElementById("new_car_base").value);
@@ -518,7 +527,6 @@ function addNewCarToList() {
         return;
     }
     
-    // توليد مفتاح فريد للسيارة بناءً على الوقت الحالي
     let key = "car_" + Date.now();
     
     cars[key] = {
@@ -527,12 +535,10 @@ function addNewCarToList() {
         cashAdd: cash
     };
     
-    // إعادة تفريغ الحقول لعملية إضافة أخرى
     document.getElementById("new_car_name").value = "";
     document.getElementById("new_car_base").value = "";
     document.getElementById("new_car_cash").value = "";
     
-    // إعادة عرض اللوحة لتظهر السيارة الجديدة مضافة
     renderAdminCars();
 }
 
@@ -544,7 +550,6 @@ function deleteCar(key) {
 }
 
 function saveNewPrices() {
-    // تحديث قيم السيارات الحالية المتواجدة في الحقول أولاً
     for (let key in cars) {
         let inputBase = document.getElementById(`admin_base_${key}`);
         let inputCash = document.getElementById(`admin_cash_${key}`);
@@ -558,12 +563,8 @@ function saveNewPrices() {
         }
     }
     
-    // حفظ التغييرات في ذاكرة المتصفح
     localStorage.setItem('shihab_cars_prices', JSON.stringify(cars));
-    
-    // تحديث القائمة الرئيسية بالسيارات الجديدة والقديمة المتبقية
     updateCarSelectOptions();
-    
     alert("تم حفظ جميع التغييرات بنجاح!");
     toggleAdminPanel();
 }
